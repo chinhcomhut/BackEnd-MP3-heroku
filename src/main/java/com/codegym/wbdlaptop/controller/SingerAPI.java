@@ -38,7 +38,7 @@ public class SingerAPI {
         }
         return new ResponseEntity<>(singer,HttpStatus.OK);
     }
-    @PostMapping("/create/singer")
+    @PostMapping("/singer")
     public ResponseEntity<?> createSinger(@Valid @RequestBody Singer singer){
         singerService.save(singer);
         return new ResponseEntity<>(singer, HttpStatus.CREATED);
