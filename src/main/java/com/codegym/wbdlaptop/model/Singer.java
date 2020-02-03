@@ -13,17 +13,37 @@ public class Singer {
     private Long id;
 
     private String nameSinger;
+private String infomation;
+private String singerAvatar;
+
+    public Singer(String nameSinger, String infomation, String singerAvatar, List<Song> songs) {
+        this.nameSinger = nameSinger;
+        this.infomation = infomation;
+        this.singerAvatar = singerAvatar;
+        this.songs = songs;
+    }
 
     @JsonIgnore
     @OneToMany(targetEntity = Song.class, mappedBy = "singer", cascade = CascadeType.ALL)
     private List<Song> songs;
 
-    public Singer() {
+    public String getInfomation() {
+        return infomation;
     }
 
-    public Singer(String nameSinger, List<Song> songs) {
-        this.nameSinger = nameSinger;
-        this.songs = songs;
+    public void setInfomation(String infomation) {
+        this.infomation = infomation;
+    }
+
+    public String getSingerAvatar() {
+        return singerAvatar;
+    }
+
+    public void setSingerAvatar(String singerAvatar) {
+        this.singerAvatar = singerAvatar;
+    }
+
+    public Singer() {
     }
 
     public Long getId() {
