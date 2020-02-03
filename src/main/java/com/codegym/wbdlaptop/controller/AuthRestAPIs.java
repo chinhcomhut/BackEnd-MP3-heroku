@@ -165,8 +165,8 @@ public class AuthRestAPIs {
     public ResponseEntity<ResponseMessage> getListSingerUserById(){
         List<Singer> singerList = this.singerService.findAllByUserId(getCurrentUser().getId());
         if(singerList == null){
-            return  new ResponseEntity<>(new ResponseMessage("List null",null), HttpStatus.NOT_FOUND);
+            return  new ResponseEntity<ResponseMessage>(new ResponseMessage("List null",null), HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(new ResponseMessage("success", null), HttpStatus.OK);
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("success", null), HttpStatus.OK);
     }
 }

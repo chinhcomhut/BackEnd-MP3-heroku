@@ -28,9 +28,9 @@ public class SingerAPI {
     private ISongService songService;
     @Autowired
     private IUserService userService;
-    private UserPrinciple getCurrentUser(){
-        return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    }
+//    private UserPrinciple getCurrentUser(){
+//        return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    }
     @GetMapping("/singer")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> getListAllSinger(){
@@ -50,9 +50,9 @@ public class SingerAPI {
         return new ResponseEntity<>(singer,HttpStatus.OK);
     }
     @PostMapping("/singer")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> createSinger(@Valid @RequestBody Singer singer){
-        singer.setUser(this.userService.findByUserId(getCurrentUser().getId()));
+//        singer.setUser(this.userService.findByUserId(getCurrentUser().getId()));
         singerService.save(singer);
         return new ResponseEntity<>(singer, HttpStatus.CREATED);
     }
