@@ -41,7 +41,7 @@ public class SingerAPI {
         return new ResponseEntity<>(singerList, HttpStatus.OK);
     }
     @GetMapping("/singer/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> getSinger(@PathVariable Long id){
         Optional<Singer> singer = singerService.findById(id);
         if(!singer.isPresent()){
@@ -57,7 +57,7 @@ public class SingerAPI {
         return new ResponseEntity<>(singer, HttpStatus.CREATED);
     }
     @PutMapping("/singer/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> updateSinger(@Valid @RequestBody Singer singer, @PathVariable Long id){
         Optional<Singer> singer1 = singerService.findById(id);
         if(!singer1.isPresent()){
@@ -70,7 +70,7 @@ public class SingerAPI {
         return new ResponseEntity<>(singer1, HttpStatus.OK);
     }
     @DeleteMapping("/singer/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> deleteSinger(@PathVariable Long id){
         Optional<Singer> singer = singerService.findById(id);
         if(!singer.isPresent()){

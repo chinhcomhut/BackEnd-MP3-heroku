@@ -52,9 +52,9 @@ public class AuthRestAPIs {
     JwtProvider jwtProvider;
     @Autowired
     ISingerService singerService;
-    private UserPrinciple getCurrentUser(){
-        return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    }
+//    private UserPrinciple getCurrentUser(){
+//        return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
@@ -160,13 +160,13 @@ public class AuthRestAPIs {
             throw new RuntimeException("Fail!");
         }
     }
-    @GetMapping("/listSingerByUser")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<ResponseMessage> getListSingerUserById(){
-        List<Singer> singerList = this.singerService.findAllByUserId(getCurrentUser().getId());
-        if(singerList == null){
-            return  new ResponseEntity<ResponseMessage>(new ResponseMessage("List null",null), HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<ResponseMessage>(new ResponseMessage("success", null), HttpStatus.OK);
-    }
+//    @GetMapping("/listSingerByUser")
+////    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    public ResponseEntity<ResponseMessage> getListSingerUserById(){
+//        List<Singer> singerList = this.singerService.findAllByUserId(getCurrentUser().getId());
+//        if(singerList == null){
+//            return  new ResponseEntity<ResponseMessage>(new ResponseMessage("List null",null), HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<ResponseMessage>(new ResponseMessage("success", null), HttpStatus.OK);
+//    }
 }
