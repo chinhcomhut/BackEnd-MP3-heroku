@@ -13,12 +13,12 @@ public class Singer {
     private Long id;
 
     private String nameSinger;
-private String infomation;
+private String information;
 private String singerAvatar;
 
     public Singer(String nameSinger, String infomation, String singerAvatar, List<Song> songs) {
         this.nameSinger = nameSinger;
-        this.infomation = infomation;
+        this.information = infomation;
         this.singerAvatar = singerAvatar;
         this.songs = songs;
     }
@@ -27,12 +27,12 @@ private String singerAvatar;
     @OneToMany(targetEntity = Song.class, mappedBy = "singer", cascade = CascadeType.ALL)
     private List<Song> songs;
 
-    public String getInfomation() {
-        return infomation;
+    public String getInformation() {
+        return information;
     }
 
-    public void setInfomation(String infomation) {
-        this.infomation = infomation;
+    public void setInformation(String infomation) {
+        this.information = infomation;
     }
 
     public String getSingerAvatar() {

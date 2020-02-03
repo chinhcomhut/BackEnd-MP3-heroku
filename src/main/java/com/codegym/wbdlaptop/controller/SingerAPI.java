@@ -50,7 +50,7 @@ public class SingerAPI {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         singer1.get().setNameSinger(singer.getNameSinger());
-        singer1.get().setInfomation(singer.getInfomation());
+        singer1.get().setInformation(singer.getInformation());
         singer1.get().setSingerAvatar(singer.getSingerAvatar());
         singerService.save(singer1.get());
         return new ResponseEntity<>(singer1, HttpStatus.OK);
