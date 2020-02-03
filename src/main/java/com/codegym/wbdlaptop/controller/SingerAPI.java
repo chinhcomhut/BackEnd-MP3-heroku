@@ -6,6 +6,7 @@ import com.codegym.wbdlaptop.model.Song;
 import com.codegym.wbdlaptop.security.service.UserPrinciple;
 import com.codegym.wbdlaptop.service.ISingerService;
 import com.codegym.wbdlaptop.service.ISongService;
+import com.codegym.wbdlaptop.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,8 @@ public class SingerAPI {
     private ISingerService singerService;
     @Autowired
     private ISongService songService;
+    @Autowired
+    private IUserService userService;
     private UserPrinciple getCurrentUser(){
         return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
@@ -49,6 +52,7 @@ public class SingerAPI {
     @PostMapping("/singer")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> createSinger(@Valid @RequestBody Singer singer){
+        singer.setUser(this.userService.findById(getCurrentUser().getId()));
         singerService.save(singer);
         return new ResponseEntity<>(singer, HttpStatus.CREATED);
     }
