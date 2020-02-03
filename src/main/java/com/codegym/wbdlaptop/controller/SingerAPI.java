@@ -3,15 +3,15 @@ package com.codegym.wbdlaptop.controller;
 import com.codegym.wbdlaptop.message.response.ResponseMessage;
 import com.codegym.wbdlaptop.model.Singer;
 import com.codegym.wbdlaptop.model.Song;
-import com.codegym.wbdlaptop.security.service.UserPrinciple;
+//import com.codegym.wbdlaptop.security.service.UserPrinciple;
 import com.codegym.wbdlaptop.service.ISingerService;
 import com.codegym.wbdlaptop.service.ISongService;
-import com.codegym.wbdlaptop.service.IUserService;
+//import com.codegym.wbdlaptop.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,8 +26,8 @@ public class SingerAPI {
     private ISingerService singerService;
     @Autowired
     private ISongService songService;
-    @Autowired
-    private IUserService userService;
+//    @Autowired
+//    private IUserService userService;
 //    private UserPrinciple getCurrentUser(){
 //        return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //    }

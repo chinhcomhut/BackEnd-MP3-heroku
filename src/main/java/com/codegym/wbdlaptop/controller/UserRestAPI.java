@@ -19,8 +19,8 @@ public class UserRestAPI {
     @Autowired
     private IUserService userService;
 
-    @Autowired
-    private ISongService productService;
+//    @Autowired
+//    private ISongService productService;
 
     @GetMapping("/user")
     public ResponseEntity<?> getListAllUser(){
