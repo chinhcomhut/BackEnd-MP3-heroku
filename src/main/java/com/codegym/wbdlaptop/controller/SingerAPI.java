@@ -52,7 +52,7 @@ public class SingerAPI {
     @PostMapping("/singer")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> createSinger(@Valid @RequestBody Singer singer){
-        singer.setUser(this.userService.findById(getCurrentUser().getId()));
+        singer.setUser(this.userService.findByUserId(getCurrentUser().getId()));
         singerService.save(singer);
         return new ResponseEntity<>(singer, HttpStatus.CREATED);
     }

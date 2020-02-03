@@ -27,12 +27,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Optional<User> findByUserName(Long username) {
-        return repository.findById(username);
+    public Optional<User> findById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
-    public User findById(Long id) {
+    public User findByUserId(Long id) {
         return repository.findById(id).get();
     }
 
