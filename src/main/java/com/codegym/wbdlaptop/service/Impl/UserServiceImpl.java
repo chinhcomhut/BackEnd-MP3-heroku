@@ -31,10 +31,10 @@ public class UserServiceImpl implements IUserService {
         return repository.findById(id);
     }
 
-    @Override
-    public User findByUserId(Long id) {
-        return repository.findById(id).get();
-    }
+//    @Override
+//    public User findByUserId(Long id) {
+//        return repository.findById(id).get();
+//    }
 
     @Override
     public void save(User user) {

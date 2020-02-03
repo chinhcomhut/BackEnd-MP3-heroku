@@ -11,7 +11,7 @@ public interface IUserService {
     Boolean existsByUsername(String username);
 
     Optional<User> findById(Long id);
-   User findByUserId(Long id);
+//   User findByUserId(Long id);
     void save(User user);
 
     Iterable<User> findAll();
