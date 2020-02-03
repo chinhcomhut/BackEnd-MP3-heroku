@@ -8,10 +8,12 @@ import com.codegym.wbdlaptop.message.response.JwtResponse;
 import com.codegym.wbdlaptop.message.response.ResponseMessage;
 import com.codegym.wbdlaptop.model.Role;
 import com.codegym.wbdlaptop.model.RoleName;
+import com.codegym.wbdlaptop.model.Singer;
 import com.codegym.wbdlaptop.model.User;
 import com.codegym.wbdlaptop.security.jwt.JwtProvider;
 import com.codegym.wbdlaptop.security.service.UserPrinciple;
 import com.codegym.wbdlaptop.service.IRoleService;
+import com.codegym.wbdlaptop.service.ISingerService;
 import com.codegym.wbdlaptop.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -46,6 +49,11 @@ public class AuthRestAPIs {
 
     @Autowired
     JwtProvider jwtProvider;
+    @Autowired
+    ISingerService singerService;
+    private UserPrinciple getCurrentUser(){
+        return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
@@ -150,5 +158,13 @@ public class AuthRestAPIs {
         } catch (Exception e) {
             throw new RuntimeException("Fail!");
         }
+    }
+    @GetMapping("/listSingerByUser")
+    public ResponseEntity<ResponseMessage> getListSingerUserById(){
+        List<Singer> singerList = this.singerService.findAllByUserId(getCurrentUser().getId());
+        if(singerList == null){
+            return  new ResponseEntity<>(new ResponseMessage("List null",null), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(new ResponseMessage("success", null), HttpStatus.OK);
     }
 }

@@ -15,36 +15,21 @@ public class Singer {
     private String nameSinger;
 private String information;
 private String singerAvatar;
+@OneToOne
+@JoinColumn
+private User user;
 
-    public Singer(String nameSinger, String infomation, String singerAvatar, List<Song> songs) {
+    public Singer(String nameSinger, String information, String singerAvatar, User user, List<Song> songs) {
         this.nameSinger = nameSinger;
-        this.information = infomation;
+        this.information = information;
         this.singerAvatar = singerAvatar;
+        this.user = user;
         this.songs = songs;
     }
 
     @JsonIgnore
     @OneToMany(targetEntity = Song.class, mappedBy = "singer", cascade = CascadeType.ALL)
     private List<Song> songs;
-
-    public String getInformation() {
-        return information;
-    }
-
-    public void setInformation(String infomation) {
-        this.information = infomation;
-    }
-
-    public String getSingerAvatar() {
-        return singerAvatar;
-    }
-
-    public void setSingerAvatar(String singerAvatar) {
-        this.singerAvatar = singerAvatar;
-    }
-
-    public Singer() {
-    }
 
     public Long getId() {
         return id;
@@ -62,6 +47,30 @@ private String singerAvatar;
         this.nameSinger = nameSinger;
     }
 
+    public String getInformation() {
+        return information;
+    }
+
+    public void setInformation(String information) {
+        this.information = information;
+    }
+
+    public String getSingerAvatar() {
+        return singerAvatar;
+    }
+
+    public void setSingerAvatar(String singerAvatar) {
+        this.singerAvatar = singerAvatar;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public List<Song> getSongs() {
         return songs;
     }
@@ -69,5 +78,4 @@ private String singerAvatar;
     public void setSongs(List<Song> songs) {
         this.songs = songs;
     }
-
 }

@@ -6,6 +6,7 @@ import com.codegym.wbdlaptop.service.ISingerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,11 @@ public class SingerServiceImpl implements ISingerService {
     @Override
     public void delete(Long id) {
         singerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Singer> findAllByUserId(Long user_id) {
+        return singerRepository.findAllByUserId(user_id);
     }
 
     @Override
