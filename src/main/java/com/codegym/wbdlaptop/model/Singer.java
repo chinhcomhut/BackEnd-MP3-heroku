@@ -15,15 +15,15 @@ public class Singer {
     private String nameSinger;
 private String information;
 private String singerAvatar;
-@OneToOne
-@JoinColumn
-private User user;
+//@OneToOne
+//@JoinColumn
+//private User user;
 
-    public Singer(String nameSinger, String information, String singerAvatar, User user, List<Song> songs) {
+    public Singer(String nameSinger, String information, String singerAvatar,  List<Song> songs) {
         this.nameSinger = nameSinger;
         this.information = information;
         this.singerAvatar = singerAvatar;
-        this.user = user;
+//        this.user = user;
         this.songs = songs;
     }
 
@@ -63,13 +63,13 @@ private User user;
         this.singerAvatar = singerAvatar;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public List<Song> getSongs() {
         return songs;
