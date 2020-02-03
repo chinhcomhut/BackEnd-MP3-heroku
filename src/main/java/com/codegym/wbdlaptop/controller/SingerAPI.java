@@ -32,7 +32,7 @@ public class SingerAPI {
 //        return (UserPrinciple) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //    }
     @GetMapping("/singer")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> getListAllSinger(){
         List<Singer> singerList = (List<Singer>) singerService.findAll();
         if(singerList.isEmpty()){
